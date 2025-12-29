@@ -3,28 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="manifest" href="manifest.json">
-    <title>Instalador de App</title>
-
-  <!-- Etiquetas críticas para Pantalla Completa en iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Nombre de tu App">
     
+    <!-- Configuración PWA y iOS Pantalla Completa -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Mi App">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="manifest" href="manifest.json">
+
+    <title>Cargando Aplicación...</title>
+
+    <style>
+        /* Elimina margenes y evita el scroll del navegador */
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            width: 100%;
+            overflow: hidden; 
+            background-color: #ffffff;
+        }
+        /* Contenedor del Iframe para que ocupe todo el alto visual */
+        .app-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        /* Mensaje que solo se ve en el navegador antes de instalar */
+        #install-msg {
+            display: none;
+            text-align: center;
+            padding-top: 100px;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app-view" class="app-container" style="display: none;">
+        <!-- Reemplaza la URL de abajo por tu Browser Link de AppSheet -->
+        <iframe src="https://www.appsheet.com/start/7095c89d-4be4-401f-9f24-07837cddd19f"></iframe>
+    </div>
+
+    <div id="install-msg">
+        <img src="icon-192.png" width="100" style="border-radius: 20px;">
+        <h2>Instala la aplicación</h2>
+        <p>Para usar esta app a pantalla completa:</p>
+        <p><strong>iOS (iPhone):</strong> Toca <img src="img.icons8.com"> y "Añadir a pantalla de inicio".</p>
+        <p><strong>Android:</strong> Toca los 3 puntos y "Instalar".</p>
+        <br>
+        <a href="https://www.appsheet.com/start/7095c89d-4be4-401f-9f24-07837cddd19f" style="color: blue;">O entrar sin instalar (verás barras)</a>
+    </div>
+
     <script>
-        // Si ya está abierta como PWA (instalada), redirige a AppSheet
-        if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-            window.location.href = "https://www.appsheet.com/start/7095c89d-4be4-401f-9f24-07837cddd19f";
+        // Detectar si está en modo Standalone (App instalada)
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+        if (isStandalone) {
+            // Si está instalada, mostramos el iframe a pantalla completa
+            document.getElementById('app-view').style.display = 'block';
+        } else {
+            // Si está en el navegador, mostramos instrucciones de instalación
+            document.getElementById('install-msg').style.display = 'block';
         }
     </script>
-</head>
-<body style="font-family: sans-serif; text-align: center; padding-top: 50px;">
-    <img src="icon-192.png" width="100">
-    <h2>Preparando tu aplicación...</h2>
-    <p>Para usar esta app de forma profesional:</p>
-    <p><strong>Android:</strong> Toca los 3 puntos y elige "Instalar".</p>
-    <p><strong>iPhone:</strong> Toca 'Compartir' y 'Añadir a pantalla de inicio'.</p>
-    <br>
-    <a href="https://www.appsheet.com/start/7095c89d-4be4-401f-9f24-07837cddd19f" style="color: blue;">O haz clic aquí para entrar sin instalar</a>
 </body>
 </html>
