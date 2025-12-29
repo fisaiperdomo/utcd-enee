@@ -2,8 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="manifest" href="manifest.json">
     <title>Instalador de App</title>
+
+  <!-- Etiquetas críticas para Pantalla Completa en iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nombre de tu App">
+    
     <script>
         // Si ya está abierta como PWA (instalada), redirige a AppSheet
         if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
@@ -18,6 +25,6 @@
     <p><strong>Android:</strong> Toca los 3 puntos y elige "Instalar".</p>
     <p><strong>iPhone:</strong> Toca 'Compartir' y 'Añadir a pantalla de inicio'.</p>
     <br>
-    <a href="TU_BROWSER_LINK_DE_APPSHEET" style="color: blue;">O haz clic aquí para entrar sin instalar</a>
+    <a href="https://www.appsheet.com/start/7095c89d-4be4-401f-9f24-07837cddd19f" style="color: blue;">O haz clic aquí para entrar sin instalar</a>
 </body>
 </html>
