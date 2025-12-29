@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Aplicación</title>
-  <link rel="manifest" href="manifest.json">
-  <!-- Configuración para iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Mi App">
-  <link rel="apple-touch-icon" href="icon-192.png">
-  
-  <script>
-    // Redirige al Browser Link de tu AppSheet
-    window.location.href = "https://www.appsheet.com/start/7095c89d-4be4-401f-9f24-07837cddd19f";
-  </script>
+    <meta charset="UTF-8">
+    <link rel="manifest" href="manifest.json">
+    <title>Instalador de App</title>
+    <script>
+        // Si ya está abierta como PWA (instalada), redirige a AppSheet
+        if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+            window.location.href = "https://www.appsheet.com/start/7095c89d-4be4-401f-9f24-07837cddd19f";
+        }
+    </script>
 </head>
-<body>
-  <p style="text-align: center; margin-top: 20%;">Cargando aplicación...</p>
+<body style="font-family: sans-serif; text-align: center; padding-top: 50px;">
+    <img src="icon-192.png" width="100">
+    <h2>Preparando tu aplicación...</h2>
+    <p>Para usar esta app de forma profesional:</p>
+    <p><strong>Android:</strong> Toca los 3 puntos y elige "Instalar".</p>
+    <p><strong>iPhone:</strong> Toca 'Compartir' y 'Añadir a pantalla de inicio'.</p>
+    <br>
+    <a href="TU_BROWSER_LINK_DE_APPSHEET" style="color: blue;">O haz clic aquí para entrar sin instalar</a>
 </body>
 </html>
